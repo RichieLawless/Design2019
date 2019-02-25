@@ -1,10 +1,15 @@
 import cv2
-import Compare
-import picture
 import os
 import sys
 
-def start_func():
-    print ("starting demo script one")
+print ("starting demo script one")
+confirm = input("Would you like to start the demo? Y/N \n")
+if (confirm == "y","Y"):
+    os.system("python picture.py")
+    input('Press enter to continue to the next picture: ')
+    os.system("python picture.py")
+    input('Press enter to continue to compare the two images?: ')
 
-    execfile(picture)
+    os.system("python Compare.py")
+else:
+    sys.exit(1)

@@ -5,11 +5,11 @@ from skimage import io
 from skimage.measure import compare_ssim
 import argparse
 import imutils
-
-
+import picture
 
 img1 = io.imread("img1.png")
 img2 = io.imread("img2.png")
+
 
 if img1.shape == img2.shape:
     print("The images have same size and channels")
