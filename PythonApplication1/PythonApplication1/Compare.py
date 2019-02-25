@@ -1,6 +1,6 @@
 import cv2
-original = cv2.imread("imaoriginal_golden_bridge.jpg")
-duplicate = cv2.imread("images/duplicate.jpg")
+original = cv2.imread("img1.png")
+duplicate = cv2.imread("img2.png")
 if original.shape == duplicate.shape:
     print("The images have same size and channels")
     difference = cv2.subtract(original, duplicate)
