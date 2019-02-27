@@ -15,9 +15,11 @@ if (confirm.lower() == "y"):
     os.system("python picture.py")
     
 
-    print("We will now move on to the compare function")
-    os.system("python Compare.py")
+    confirm2 = input("Would you like to compare the two images? Y/N \n")
+    if (confirm2.lower() == "y"):
+        os.system("python Compare.py")
+    else:
+        os._exit(1)
     input('Press any key to end the demo')
-
 else:
     os._exit(1)
