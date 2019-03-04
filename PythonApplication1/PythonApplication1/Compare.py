@@ -10,7 +10,7 @@ import argparse
 import imutils
 import glob
 
-print ("below are the current saved png files to choose from \n")
+print ("Below are the current saved png files to choose from \n")
 
 print (glob.glob('./*.png'))
 
@@ -36,6 +36,9 @@ img2 = io.imread(selectimg2)
 #else:
 #    print("The images are not the same")
 
+#####
+#Version 2.0
+#####
 def mse(img1, img2):
 	# the 'Mean Squared Error' between the two images is the
 	# sum of the squared difference between the two images;

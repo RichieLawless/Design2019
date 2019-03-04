@@ -18,6 +18,8 @@ if (confirm.lower() == "y"):
     confirm2 = input("Would you like to compare the two images? Y/N \n")
     if (confirm2.lower() == "y"):
         os.system("python Compare.py")
+        confirm3 = input("End the compare by pressing c")
+
     else:
         os._exit(1)
     input('Press any key to end the demo')
