@@ -11,6 +11,7 @@ from scipy.ndimage import imread
 import argparse
 import imutils
 import glob
+import warnings
 
 print ("Below are the current saved png files to choose from \n")
 
@@ -108,9 +109,10 @@ cv2.destroyAllWindows()
 
 #### Removed for version 3.0, uses a similar command
 # convert the images to grayscale
+'''
 #original = cv2.cvtColor(original, cv2.COLOR_BGR2GRAY)
 #target = cv2.cvtColor(target, cv2.COLOR_BGR2GRAY)
-'''
+
 original = img1
 target = img2
 #######
@@ -142,6 +144,7 @@ for f in faces_original:
     cv2.rectangle(image_original, (x,y), (x+w, y+h), (255,0,0), 3)
     # Define the region of interest in the image  
     face_crop_original = gray_original[y:y+h, x:x+w]
+    cv2.imwrite("C:\\Users\\Richie\\source\\repos\\Design2019\\PythonApplication1\\PythonApplication1\\FCO.png", face_crop_original)
 #Get bounding box for each face in target
 
 
@@ -150,7 +153,7 @@ for t in faces_target:
     cv2.rectangle(image_target, (x,y), (x+w, y+h), (255,0,0), 3)
     # Define the region of interest in the image  
     face_crop_target = gray_target[y:y+h, x:x+w]
-
+    cv2.imwrite("C:\\Users\\Richie\\source\\repos\\Design2019\\PythonApplication1\\PythonApplication1\\FCT.png", face_crop_target)
 # Display the image with the bounding boxes
 fig = plt.figure(figsize = (9,9))
 axl = fig.add_subplot(111)
@@ -192,6 +195,9 @@ for face in face_crop_target:
     cv2.imshow('face',face)
     cv2.waitKey(0)
 
+#cv2.imwrite(str(face_crop_original)+'.png', frame)
+#cv2.imwrite(str(face_crop_target)+'.png', frame)
+
 
 
 
@@ -218,10 +224,11 @@ def compare_images(face_crop_original, face_crop_target, multichannel = True):  
 	#m = mse(face_crop_original, face_crop_target)
     face_crop_original = np.array([[],[],[]]) 
     face_crop_target = np.array([[],[],[]])
-    s = ssim(face_crop_original, face_crop_target)
- 
+    s = ssim(face_crop_original, face_crop_target, multichannel=True)
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore", category=RuntimeWarning)
 	# setup the figure
-    fig = plt.figure(title)
+    #fig = plt.figure(title)
 	#plt.suptitle("MSE: %.2f, SSIM: %.2f" % (m, s))
  
 	# show first image
@@ -258,8 +265,13 @@ for (i, (name, image)) in enumerate(images):
 height = 2**10
 width = 2**10
 
+#gray_original = cv2.cvtColor(original, cv2.COLOR_RGB2GRAY)
+#gray_target = cv2.cvtColor(target, cv2.COLOR_RGB2GRAY)
 
-compare_images(face_crop_original, face_crop_original, "Original vs. Original")
+
+ssim(face_crop_original, face_crop_target, multichannel=True, win_size=3)
+#ssim(multichannel = True)
+
 compare_images(face_crop_original, face_crop_target, "Original vs. target")
 
 cv2.waitKey(0)

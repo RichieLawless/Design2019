@@ -3,6 +3,7 @@
     "",
     "\\PythonApplication1",
     "\\PythonApplication1\\PythonApplication1",
+    "\\PythonApplication1\\PythonApplication1\\__pycache__",
     "\\recognition_site",
     "\\recognition_site\\authenticate",
     "\\recognition_site\\authenticate\\templates",
