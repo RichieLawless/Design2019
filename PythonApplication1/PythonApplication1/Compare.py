@@ -43,8 +43,8 @@ img2 = io.imread(selectimg2)
 #####
 
 # Load the Haar cascades
-face_cascade = cv2.CascadeClassifier('C:\\Users\\Richie\\Desktop\\External Libraries\\OpenCV\\etc\\haarcascades\\haarcascade_frontalface_default.xml')
-eye_cascade = cv2.CascadeClassifier('C:\\Users\\Richie\\Desktop\\External Libraries\\OpenCV\\etc\\haarcascades\\haarcascades_eye.xml')
+face_cascade = cv2.CascadeClassifier('C:\\opencv\\build\\etc\\haarcascades\\haarcascade_frontalface_default.xml')
+eye_cascade = cv2.CascadeClassifier('C:\\opencv\\build\\etc\\haarcascades\\haarcascade_eye.xml')
 '''
 def mse(img1, img2):
 	# the 'Mean Squared Error' between the two images is the
