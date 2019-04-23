@@ -75,6 +75,22 @@ for t in faces_target:
     # Define the region of interest in the image  
     face_crop_target = gray_target[y:y+h, x:x+w]
 
+
+
+def resize_image(input_image_path,
+                 output_image_path,
+                 size):
+    original_image = Image.open(input_image_path)
+    width, height = original_image.size
+    print('The original image size is {wide} wide x {height} '
+          'high'.format(wide=width, height=height))
+ 
+    resized_image = original_image.resize(size)
+    width, height = resized_image.size
+    print('The resized image size is {wide} wide x {height} '
+          'high'.format(wide=width, height=height))
+    resized_image.save(output_image_path)
+
 def mse(img1, img2):
 
 	err = np.sum((img1.astype("float") - img2.astype("float")) ** 2)
@@ -111,7 +127,7 @@ def compare_images(img1, img2, title):
 # Display the image with the bounding boxes
 fig = plt.figure(figsize = (9,9))
 axl = fig.add_subplot(111)
-axl.set_xticks([])
+axl.set_xticks
 axl.set_yticks([])
 
 axl.set_title("Face detection")
@@ -120,8 +136,18 @@ axl.imshow(image_target)
 
 cv2.imwrite('face_crop_original.png', face_crop_original)
 cv2.imwrite('face_crop_target.png', face_crop_target)
+
+
+resize_image(input_image_path='face_crop_original.png',
+              output_image_path='face_crop_original.png',
+              size=(1920, 1080))
+resize_image(input_image_path='face_crop_target.png',
+              output_image_path='face_crop_target.png',
+              size=(1920, 1080))
+
 original = io.imread('face_crop_original.png')
 target = io.imread('face_crop_target.png')
+
 compare_images(original, target, "Original vs. target")
 
 cv2.waitKey(0)

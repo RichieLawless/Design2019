@@ -3,12 +3,7 @@
     "",
     "\\PythonApplication1",
     "\\PythonApplication1\\PythonApplication1",
-    "\\PythonApplication1\\PythonApplication1\\__pycache__",
-    "\\recognition_site",
-    "\\recognition_site\\authenticate",
-    "\\recognition_site\\authenticate\\templates",
-    "\\recognition_site\\authenticate\\templates\\authenticate"
+    "\\PythonApplication1\\PythonApplication1\\__pycache__"
   ],
-  "SelectedNode": "\\PythonApplication1\\PythonApplication1\\picture.py",
   "PreviewInSolutionExplorer": false
 }

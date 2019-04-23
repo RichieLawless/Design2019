@@ -17,7 +17,7 @@ if (confirm.lower() == "y"):
 
     confirm2 = input("Would you like to compare the two images? Y/N \n")
     if (confirm2.lower() == "y"):
-        os.system("python Compare.py")
+        os.system("python FaceComp.py")
         confirm3 = input("End the compare by pressing c")
 
     else:
