@@ -14,6 +14,21 @@ import glob
 from scipy.ndimage import uniform_filter, gaussian_filter
 from PIL import Image
 
+
+#Project development started on January 20th, and is still just a prototype
+#created for Senior Design 2019 at Hofstra university
+#Using existing libraries such as Skimage and OpenCV
+#SSIM and MSE (Stuctural similarity index and Mean Squared Error)
+#of two photos, here we are using faces
+#the faces are cropped out of the original photos then saved as new images, converted to grey-scale
+#then the two cropped faces are compared and given the score,
+
+#anything under 2000 SSIM is considered alike, MSE here we are going to consider the confidence, the closer to 0 the more alike the two images are
+#but there are better methods of this, this is just a prototype so for now we say that anything under .65 is considered average confidence, this is because in most
+#cases faces are similar 
+#so a photo that has a score of 4000 SSIM and .6 is considered not alike or the same person, the struture is different but because it is a face its similar.
+
+
 face_cascade = cv2.CascadeClassifier('C:\\opencv\\build\\etc\\haarcascades\\haarcascade_frontalface_default.xml')
 eye_cascade = cv2.CascadeClassifier('C:\\opencv\\build\\etc\\haarcascades\\haarcascade_eye.xml')
 
@@ -103,8 +118,8 @@ def mse(img1, img2):
 def compare_images(img1, img2, title):
 	# compute the mean squared error and structural similarity
 	# index for the images
-    m = mse(img1, img2)
-    s = ssim(img1, img2)
+    m = mse(img1, img2) #calculate the MSE
+    s = ssim(img1, img2) #calculate the SSIM with the build in library
     # setup the figure
     fig = plt.figure(title)
     plt.suptitle("MSE: %.2f, SSIM: %.2f" % (m, s))
@@ -136,7 +151,7 @@ axl.imshow(image_target)
 
 cv2.imwrite('face_crop_original.png', face_crop_original)
 cv2.imwrite('face_crop_target.png', face_crop_target)
-
+#rewrite the pictures to new pngs
 
 resize_image(input_image_path='face_crop_original.png',
               output_image_path='face_crop_original.png',
@@ -144,7 +159,7 @@ resize_image(input_image_path='face_crop_original.png',
 resize_image(input_image_path='face_crop_target.png',
               output_image_path='face_crop_target.png',
               size=(1920, 1080))
-
+#resize the images so the compare function works
 original = io.imread('face_crop_original.png')
 target = io.imread('face_crop_target.png')
 
